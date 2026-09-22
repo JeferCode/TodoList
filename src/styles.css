@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.menu{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 20%;
+    height: 100vh;
+    color:beige;
+}
+
+.element{
+    height: 20px;
+    width: 100%;
+    color: white;
+}
