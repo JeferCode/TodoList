@@ -1,5 +1,6 @@
 export class folder{
     constructor(nombre){
+        this.id = crypto.randomUUID()
         this.nombre = nombre
         this.tasks = [];
     }

@@ -8,7 +8,7 @@ export class task{
         this.complete = checklist
     }
 
-    isComplete(){
+    switchComplete(){
         this.complete = !this.complete;
     }
 }

@@ -1,14 +1,22 @@
 const listContent = document.getElementById("list-content");
 export const container = document.getElementById("container");
+import { folder } from "../models/folder.js";
+import { save } from "../storage/save.js";
 
-export function addFolder() {
-    const datosFolder = document.createElement("div")
-    datosFolder.classList.add("element");
-    datosFolder.innerHTML = `<dialog open class="dialog-añadir"><form class="form"><input name="name" placeholder="list name"/> <button method="dialog">añadir</button></form></dialog>`
-    const elementForm = document.querySelector(".dialog-añadir form")
-    elementForm.addEventListener("submit", (e) => {
-        e.preventDefault()
-        const data = new FormData(elementForm);
-        listContent.append(data.get("name"));
-    })
-} 
+
+export function addFolder(name) {
+    if (name !== "") {
+        let carpeta = new folder(name)
+        let element = document.createElement("button");
+        element.classList.add("folder");
+        element.textContent = name;
+        listContent.append(element);
+        element.click()
+        return carpeta;
+    }
+}
+
+export function obtainName() {
+    let dato = prompt("ingresa el nombre")
+    return dato
+}

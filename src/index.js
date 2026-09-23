@@ -1,7 +1,7 @@
 import { folder } from "./models/folder.js"
 import { task } from "./models/task.js"
 import { save } from "./storage/save.js"
-import {addFolder, container} from "./UI/addFolder.js"
+import {addFolder, container, obtainName} from "./UI/addFolder.js"
 import "./styles.css";
 
 
@@ -19,8 +19,7 @@ añadir.addEventListener("click", () => {
     //hogar.removeTask(2)
 
     save(prueva, "prueva")*/
-    addFolder();
-    console.log("se inicio la funcion addFolder")
+    let name = obtainName()
+    let folder = addFolder(name)
+    save(folder, name)
 })
-
-

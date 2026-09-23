@@ -19,3 +19,9 @@
     width: 100%;
     color: white;
 }
+
+#list-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
