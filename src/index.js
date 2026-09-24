@@ -1,14 +1,14 @@
 import { folder } from "./models/folder.js"
 import { task } from "./models/task.js"
 import { save } from "./storage/save.js"
-import {addFolder, container, obtainName} from "./UI/addFolder.js"
+import { addFolder, container, obtainName, hiddenForm, visibleForm, form } from "./UI/addFolder.js"
 import "./styles.css";
 
 
 let añadir = document.getElementById("añadir");
 
 añadir.addEventListener("click", () => {
-    
+
     /*let prueva = new folder("prueva");
 
 
@@ -19,7 +19,14 @@ añadir.addEventListener("click", () => {
     //hogar.removeTask(2)
 
     save(prueva, "prueva")*/
-    let name = obtainName()
-    let folder = addFolder(name)
-    save(folder, name)
+    visibleForm()
+})
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let name = obtainName(form)
+    let addData = addFolder(name);
+    save(addData, name)
+    form.reset();
 })

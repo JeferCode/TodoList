@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo list</title>
 </head>
+
 <body>
     <header>
         <nav class="menu">
@@ -17,6 +19,15 @@
             <button id="añadir">añadir</button>
         </nav>
     </header>
+    <div id="section-form-folder" class="hidden">
+        <form id="form-folder">
+            <h2>ingresa el nombre de la lista:</h2>
+            <input type="text" name="name" placeholder="New List">
+            <button type="submit" id="create-folder">Crear</button>
+        </form>
+    </div>
+
     <section id="container"></section>
 </body>
+
 </html>
