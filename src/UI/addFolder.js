@@ -1,4 +1,4 @@
-const listContent = document.getElementById("list-content");
+export const listContent = document.getElementById("list-content");
 export const container = document.getElementById("container");
 import { folder } from "../models/folder.js";
 import { save } from "../storage/save.js";
@@ -11,10 +11,10 @@ export function addFolder(name) {
     if (name !== "" && name !== null) {
         let carpeta = new folder(name)
         let element = document.createElement("button");
+        element.dataset.id = carpeta.id;
         element.classList.add("folder");
         element.textContent = name;
         listContent.append(element);
-        //element.click()
         return carpeta;
     }
 }

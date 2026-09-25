@@ -1,9 +1,11 @@
 import { folder } from "./models/folder.js"
 import { task } from "./models/task.js"
-import { save } from "./storage/save.js"
-import { addFolder, container, obtainName, hiddenForm, visibleForm, form } from "./UI/addFolder.js"
+import { add, folders } from "./storage/save.js"
+import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent} from "./UI/addFolder.js"
 import "./styles.css";
-
+import { load, loadId } from "./storage/load.js";
+import { pageTitle } from "./UI/loadFolder.js";
+import { containerPage } from "./UI/loadFolder.js";
 
 let añadir = document.getElementById("añadir");
 
@@ -27,6 +29,17 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     let name = obtainName(form)
     let addData = addFolder(name);
-    save(addData, name)
+    add(addData)
     form.reset();
+    load()
+})
+
+console.log(loadId(folders, "0e7c4def-bb61-4e68-ab9a-9f5b9d9857fd"))
+
+listContent.addEventListener("click", (e)=>{
+    if (e.target.classList.contains("folder")) {
+        containerPage.innerHTML = "";
+        let id = e.target.dataset.id;
+        pageTitle(loadId(folders, id))
+    }
 })

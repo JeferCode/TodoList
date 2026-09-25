@@ -4,19 +4,23 @@
     box-sizing: border-box;
 }
 
+body{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
 .menu{
     background-color: black;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 20%;
+    width: 100%;
     height: 100vh;
     color:beige;
 }
 
 .element{
     height: 20px;
-    width: 100%;
     color: white;
 }
 
