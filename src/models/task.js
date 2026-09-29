@@ -1,6 +1,6 @@
 export class task{
-    constructor(id, title, description, dueDate, priority, checklist){
-        this.id = id,
+    constructor(title, description, dueDate, priority, checklist){
+        this.id = crypto.randomUUID(),
         this.title = title,
         this.description = description,
         this.dueDate = dueDate,

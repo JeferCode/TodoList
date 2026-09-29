@@ -1,9 +1,15 @@
 ///cargar las carpetas y tareas que estan en el localstorage
+import { addFolder } from "../UI/addFolder.js";
 
 export function load() {
-    let folder = JSON.parse(localStorage.getItem("folders")) || [];
-    //console.log(folder);
-    return folder;
+    let folderStorage = JSON.parse(localStorage.getItem("folders")) || [];
+    return folderStorage;
+}
+
+export function ShowLoad(data){
+    data.forEach(element => {
+        addFolder(element.name)
+    });
 }
 
 export function loadId(elements, id) {

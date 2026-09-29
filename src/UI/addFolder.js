@@ -9,9 +9,10 @@ export let form = document.getElementById("form-folder")
 
 export function addFolder(name) {
     if (name !== "" && name !== null) {
-        let carpeta = new folder(name)
+        let id = crypto.randomUUID();
+        let carpeta = new folder(name, id)
         let element = document.createElement("button");
-        element.dataset.id = carpeta.id;
+        element.dataset.id = id;
         element.classList.add("folder");
         element.textContent = name;
         listContent.append(element);
@@ -20,10 +21,10 @@ export function addFolder(name) {
 }
 
 export function obtainName(formulario) {
-        let data = new FormData(formulario);
-        let name = data.get("name")
-        hiddenForm()
-        return name;
+    let data = new FormData(formulario);
+    let name = data.get("name")
+    hiddenForm()
+    return name;
 }
 
 export function visibleForm() {

@@ -1,11 +1,14 @@
 import { folder } from "./models/folder.js"
 import { task } from "./models/task.js"
 import { add, folders } from "./storage/save.js"
-import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent} from "./UI/addFolder.js"
+import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent } from "./UI/addFolder.js"
 import "./styles.css";
 import { load, loadId } from "./storage/load.js";
-import { pageTitle } from "./UI/loadFolder.js";
+import { renderPage } from "./UI/loadFolder.js";
 import { containerPage } from "./UI/loadFolder.js";
+import { ShowLoad } from "./storage/load.js";
+import { obtainDataTask, formTask } from "./UI/addTask.js";
+const addNewTask = document.getElementById("create-folder");
 
 let añadir = document.getElementById("añadir");
 
@@ -36,10 +39,22 @@ form.addEventListener("submit", (e) => {
 
 console.log(loadId(folders, "0e7c4def-bb61-4e68-ab9a-9f5b9d9857fd"))
 
-listContent.addEventListener("click", (e)=>{
+listContent.addEventListener("click", (e) => {
     if (e.target.classList.contains("folder")) {
         containerPage.innerHTML = "";
         let id = e.target.dataset.id;
-        pageTitle(loadId(folders, id))
+        console.log("ID del botón:", id);
+        let folders = load()
+        console.log("Folders cargadas:", folders);
+        let data = loadId(folders, id);
+        console.log("Data encontrada:", data);
+        renderPage(data)
     }
+})
+
+ShowLoad(folders);
+
+
+addNewTask.addEventListener("click", () => {
+    obtainDataTask(formTask)
 })

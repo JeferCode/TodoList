@@ -1,7 +1,9 @@
+import { folders } from "../storage/save.js";
+
 export class folder{
-    constructor(nombre){
-        this.id = crypto.randomUUID()
-        this.nombre = nombre
+    constructor(name, id){
+        this.id = id
+        this.name = name
         this.tasks = [];
     }
 
@@ -9,8 +11,8 @@ export class folder{
         return this.tasks.find((e)=> e.id === id)
     }
 
-    addTask(task){
-        this.tasks.push(task);
+    addTask(id, task){
+        folders.find(e => e.id === id).tasks.push(task);
     }
 
     removeTask(id){

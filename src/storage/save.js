@@ -10,3 +10,4 @@ export function add(array) {
 export function save(data) {
     localStorage.setItem("folders", JSON.stringify(data));
 }
+
