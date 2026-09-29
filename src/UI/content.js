@@ -6,6 +6,5 @@ export function renderPage(data) {
     añadirTarea.classList.add("add-tarea")
     añadirTarea.textContent = "añadir tarea"
     title.textContent = data.name;
-    console.log(title)
     containerPage.append(title, añadirTarea);
 }

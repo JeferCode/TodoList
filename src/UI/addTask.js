@@ -1,18 +1,26 @@
+import { folder } from "../models/folder.js";
 import { task } from "../models/task.js";
+import { load, loadId } from "../storage/load.js";
 const containerFormTask = document.getElementById("section-form-task");
 export const formTask = document.getElementById("form-task");
 import { containerPage } from "./loadFolder.js";
 
-function addTask() {
-    
+export function addNewTask(data) {
+    let elementask = new task(crypto.randomUUID(), data.title, data.description, data.date, data.priority, false);
+    return elementask;
 }
 
 export function obtainDataTask(form) {
     let data = new FormData(form);
+    console.log(data)
     let title = data.get("title")
+    console.log(title)
     let description = data.get("description")
+    console.log(description)
     let date = data.get("dueDate")
+    console.log(date)
     let priority = data.get("priority")
+    console.log(priority)
     hiddenFormTask();
     return {
         title,
@@ -25,11 +33,7 @@ export function obtainDataTask(form) {
 
 containerPage.addEventListener("click", (e)=>{
     if(e.target.classList.contains("add-tarea")){
-        let element = e.target.closest(".folder")
-        let id = element.dataset.id;
         visibleFormTask()
-        console.log(id)
-        return id;
     }
 })
 

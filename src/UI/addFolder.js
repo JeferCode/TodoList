@@ -11,11 +11,6 @@ export function addFolder(name) {
     if (name !== "" && name !== null) {
         let id = crypto.randomUUID();
         let carpeta = new folder(name, id)
-        let element = document.createElement("button");
-        element.dataset.id = id;
-        element.classList.add("folder");
-        element.textContent = name;
-        listContent.append(element);
         return carpeta;
     }
 }

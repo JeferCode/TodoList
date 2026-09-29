@@ -2,15 +2,6 @@ export const containerPage = document.getElementById("container-page");
 import { load } from "../storage/load.js";
 import { listContent } from "./addFolder.js";
 
-export function renderPage(data) {
-    const title = document.createElement("h2");
-    const añadirTarea = document.createElement("button");
-    añadirTarea.classList.add("add-tarea")
-    añadirTarea.textContent = "añadir tarea"
-    title.textContent = data.name;
-    console.log(title)
-    containerPage.append(title, añadirTarea);
-}
 
 export function renderFolders() {
     listContent.innerHTML = "";

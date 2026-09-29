@@ -6,8 +6,8 @@ import "./styles.css";
 import { load, loadId } from "./storage/load.js";
 import { renderPage } from "./UI/content.js";
 import { containerPage, renderFolders } from "./UI/loadFolder.js";
-import { obtainDataTask, formTask } from "./UI/addTask.js";
-const addNewTask = document.getElementById("create-folder");
+import { obtainDataTask, formTask, addNewTask } from "./UI/addTask.js";
+const btncreate = document.getElementById("create-task");
 
 let añadir = document.getElementById("añadir");
 
@@ -36,21 +36,27 @@ form.addEventListener("submit", (e) => {
     load()
 })
 
-console.log(loadId(folders, "0e7c4def-bb61-4e68-ab9a-9f5b9d9857fd"))
 
 listContent.addEventListener("click", (e) => {
     if (e.target.classList.contains("folder")) {
+        containerPage.dataset.Page = e.target.dataset.id;
         containerPage.innerHTML = "";
-        let id = e.target.dataset.id;
+        let Id = e.target.dataset.id;
         let folders = load()
-        let data = loadId(folders, id);
+        let data = loadId(folders, Id);
         renderPage(data)
     }
 })
 
 renderFolders()
 
-
-addNewTask.addEventListener("click", () => {
-    obtainDataTask(formTask)
+btncreate.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    let id = containerPage.dataset.Page;
+    console.log(id)
+    let data = obtainDataTask(formTask);
+    console.log(data)
+    let newTask = addNewTask(data);
+    let element = loadId(folders, id);
+    console.log(" ssada" + element)
 })
