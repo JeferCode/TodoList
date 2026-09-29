@@ -4,9 +4,8 @@ import { add, folders } from "./storage/save.js"
 import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent } from "./UI/addFolder.js"
 import "./styles.css";
 import { load, loadId } from "./storage/load.js";
-import { renderPage } from "./UI/loadFolder.js";
-import { containerPage } from "./UI/loadFolder.js";
-import { ShowLoad } from "./storage/load.js";
+import { renderPage } from "./UI/content.js";
+import { containerPage, renderFolders } from "./UI/loadFolder.js";
 import { obtainDataTask, formTask } from "./UI/addTask.js";
 const addNewTask = document.getElementById("create-folder");
 
@@ -43,16 +42,13 @@ listContent.addEventListener("click", (e) => {
     if (e.target.classList.contains("folder")) {
         containerPage.innerHTML = "";
         let id = e.target.dataset.id;
-        console.log("ID del botón:", id);
         let folders = load()
-        console.log("Folders cargadas:", folders);
         let data = loadId(folders, id);
-        console.log("Data encontrada:", data);
         renderPage(data)
     }
 })
 
-ShowLoad(folders);
+renderFolders()
 
 
 addNewTask.addEventListener("click", () => {

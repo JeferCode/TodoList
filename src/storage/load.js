@@ -6,12 +6,6 @@ export function load() {
     return folderStorage;
 }
 
-export function ShowLoad(data){
-    data.forEach(element => {
-        addFolder(element.name)
-    });
-}
-
 export function loadId(elements, id) {
     return elements.find((e => e.id === id))
 }
