@@ -6,13 +6,13 @@ export const formTask = document.getElementById("form-task");
 import { containerPage } from "./loadFolder.js";
 
 export function addNewTask(data) {
+    console.log(data)
     let elementask = new task(crypto.randomUUID(), data.title, data.description, data.date, data.priority, false);
     return elementask;
 }
 
 export function obtainDataTask(form) {
     let data = new FormData(form);
-    console.log(data)
     let title = data.get("title")
     console.log(title)
     let description = data.get("description")

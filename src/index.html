@@ -29,12 +29,17 @@
                 </form>
             </div>
             <div id="section-form-task" class="hidden" data-complete="false">
-                <form id="form-task" class="false">
+                <form id="form-task">
                     <h2>ingresa la informacion de la tarea:</h2>
                     <input type="text" name="title" placeholder="title">
                     <input type="text" name="description" placeholder="description">
                     <input type="date" name="dueDate" placeholder="date">
-                    <input type="" name="priority" placeholder="priority">
+                    <label for="priority">prioridad:</label>
+                    <select id="priority" name="priority">
+                        <option value="baja">baja</option>
+                        <option value="media">media</option>
+                        <option value="alta">alta</option>
+                    </select>
                     <button type="submit" id="create-task">Crear</button>
                 </form>
             </div>

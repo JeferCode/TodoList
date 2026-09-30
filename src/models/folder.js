@@ -11,8 +11,8 @@ export class folder{
         return this.tasks.find((e)=> e.id === id)
     }
 
-    addTask(id, task){
-        folders.find(e => e.id === id).tasks.push(task);
+    addTask(task){
+        this.tasks.push(task);
     }
 
     removeTask(id){
