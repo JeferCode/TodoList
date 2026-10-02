@@ -11,6 +11,10 @@ export class folder{
         return this.tasks.find((e)=> e.id === id)
     }
 
+    getAllTask(){
+        return this.tasks;
+    }
+
     addTask(task){
         this.tasks.push(task);
     }

@@ -14,13 +14,9 @@ export function addNewTask(data) {
 export function obtainDataTask(form) {
     let data = new FormData(form);
     let title = data.get("title")
-    console.log(title)
     let description = data.get("description")
-    console.log(description)
     let date = data.get("dueDate")
-    console.log(date)
     let priority = data.get("priority")
-    console.log(priority)
     hiddenFormTask();
     return {
         title,

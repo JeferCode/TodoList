@@ -4,14 +4,16 @@ import { listContent } from "./addFolder.js";
 
 
 export function renderFolders() {
-    listContent.innerHTML = "";
     let folders = load();
-    console.log(folders);
-    console.log(Array.isArray(folders));
-    folders.forEach(element => {
-        console.log("Creando botón con ID:", element.id);
-        createElemenst(element.name, element.id)
-    });
+    if (load !== null) {
+        listContent.innerHTML = "";
+        console.log(folders);
+        console.log(Array.isArray(folders));
+        folders.forEach(element => {
+            console.log("Creando botón con ID:", element.id);
+            createElemenst(element.name, element.id)
+        });
+    }
 }
 
 function createElemenst(title, id) {
