@@ -12,14 +12,19 @@ export function renderPage(data) {
 export function renderTasks(task) {
     task.forEach(element => {
         console.log(element)
-        const title = document.createElement("h3");
-        const description = document.createElement("p");
-        const priority = document.createElement("h4")
-        const date = document.createElement("p")
-        title.textContent = element.title;
-        description.textContent = element.description;
-        priority.textContent = element.priority;
-        date.textContent = element.date;
-        containerPage.append(title, description, priority, date);
+        const containerTask = document.createElement("div");
+        containerTask.classList.add("container-tast")
+        containerTask.dataset.idtask = element.id;
+        console.log(element.date)
+        containerTask.innerHTML = `<h3>${element.title}</h3> <p>${element.description}</p> 
+        <h4>${element.priority}</h4> <p>${element.dueDate}</p> <button class="delate">Eliminar</button>`
+        containerPage.append(containerTask);
     });
+}
+
+
+export function renderfordelate(element) {
+    containerPage.innerHTML = "";
+    renderPage(element);
+    renderTasks(element.getAllTask());
 }

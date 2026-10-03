@@ -6,29 +6,31 @@ export const formTask = document.getElementById("form-task");
 import { containerPage } from "./loadFolder.js";
 
 export function addNewTask(data) {
-    console.log(data)
     let elementask = new task(crypto.randomUUID(), data.title, data.description, data.date, data.priority, false);
     return elementask;
 }
 
 export function obtainDataTask(form) {
     let data = new FormData(form);
-    let title = data.get("title")
-    let description = data.get("description")
-    let date = data.get("dueDate")
+    let title = data.get("title").trim()
+    let description = data.get("description").trim()
+    let date = data.get("dueDate").trim()
     let priority = data.get("priority")
-    hiddenFormTask();
-    return {
-        title,
-        description,
-        date,
-        priority
-    };
+    if (title !== "" && description !== "" && date !== "") {
+        hiddenFormTask();
+
+        return {
+            title,
+            description,
+            date,
+            priority
+        };
+    }
 }
 
 
-containerPage.addEventListener("click", (e)=>{
-    if(e.target.classList.contains("add-tarea")){
+containerPage.addEventListener("click", (e) => {
+    if (e.target.classList.contains("add-tarea")) {
         visibleFormTask()
     }
 })

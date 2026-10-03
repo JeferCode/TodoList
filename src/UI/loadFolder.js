@@ -1,15 +1,14 @@
 export const containerPage = document.getElementById("container-page");
-import { load } from "../storage/load.js";
+import { load, converElement } from "../storage/load.js";
 import { listContent } from "./addFolder.js";
 
 
 export function renderFolders() {
-    let folders = load();
-    if (load !== null) {
+    let folders = converElement(load());
+    if (folders !== null) {
         listContent.innerHTML = "";
-        console.log(folders);
-        console.log(Array.isArray(folders));
         folders.forEach(element => {
+            console.log(element)
             console.log("Creando botón con ID:", element.id);
             createElemenst(element.name, element.id)
         });

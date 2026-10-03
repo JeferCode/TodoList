@@ -8,18 +8,18 @@ export let form = document.getElementById("form-folder")
 
 
 export function addFolder(name) {
-    if (name !== "" && name !== null) {
-        let id = crypto.randomUUID();
-        let carpeta = new folder(name, id)
-        return carpeta;
-    }
+    let id = crypto.randomUUID();
+    let carpeta = new folder(name, id)
+    return carpeta;
 }
 
 export function obtainName(formulario) {
     let data = new FormData(formulario);
-    let name = data.get("name")
-    hiddenForm()
-    return name;
+    let name = data.get("name").trim()
+    if (name !== "") {
+        hiddenForm()
+        return name;
+    }
 }
 
 export function visibleForm() {

@@ -11,3 +11,4 @@ export function save(data) {
     localStorage.setItem("folders", JSON.stringify(data));
 }
 
+//localStorage.clear()
