@@ -1,5 +1,3 @@
-import { folders } from "../storage/save.js";
-
 export class folder{
     constructor(name, id){
         this.id = id

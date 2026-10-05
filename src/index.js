@@ -1,6 +1,6 @@
 import { folder } from "./models/folder.js"
 import { task } from "./models/task.js"
-import { add, folders, save } from "./storage/save.js"
+import { add, save } from "./storage/save.js"
 import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent } from "./UI/addFolder.js"
 import "./styles.css";
 import { load, loadId, converElement } from "./storage/load.js";
@@ -8,6 +8,7 @@ import { renderfordelate, renderPage, renderTasks } from "./UI/content.js";
 import { containerPage, renderFolders } from "./UI/loadFolder.js";
 import { obtainDataTask, formTask, addNewTask } from "./UI/addTask.js";
 import { delateTasks } from "./UI/removeTask.js";
+import "./UI/removeFolder.js";
 
 let añadir = document.getElementById("añadir");
 
@@ -37,8 +38,7 @@ listContent.addEventListener("click", (e) => {
         let folders = load()
         let converFolders = converElement(folders);
         let data = loadId(converFolders, Id);
-        renderPage(data)
-        renderTasks(data.getAllTask())
+        renderfordelate(data)
     }
 })
 

@@ -1,7 +1,7 @@
 import { load } from "./load.js";
 
-export let folders = load();
 export function add(array) {
+    let folders = load();
     folders.push(array);
     save(folders)
 }

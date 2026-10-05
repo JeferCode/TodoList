@@ -5,6 +5,7 @@ import { listContent } from "./addFolder.js";
 
 export function renderFolders() {
     let folders = converElement(load());
+    console.log("este es el folders de renderfolders: " + folders)
     if (folders !== null) {
         listContent.innerHTML = "";
         folders.forEach(element => {
