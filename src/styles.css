@@ -35,3 +35,19 @@ body{
 .hidden{
     display: none;
 }
+
+.complete{
+    background-color: green;
+}
+
+.lowPriority{
+    background-color: rgb(0, 162, 255);
+}
+
+.mediumPriority{
+    background-color: rgb(102, 0, 255);
+}
+
+.heightPriority{
+    background-color: rgb(255, 0, 8);
+}

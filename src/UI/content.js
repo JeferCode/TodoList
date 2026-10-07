@@ -16,12 +16,16 @@ export function renderTasks(task) {
     task.forEach(element => {
         console.log(element)
         const containerTask = document.createElement("div");
-        containerTask.classList.add("container-tast")
+        containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
-        console.log(element.date)
         containerTask.innerHTML = `<h3>${element.title}</h3> <p>${element.description}</p> 
-        <h4>${element.priority}</h4> <p>${element.dueDate}</p> <button class="delate">Eliminar</button>`
+        <h4>${element.priority}</h4> <p>${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
         containerPage.append(containerTask);
+        if (element.complete) {
+            containerTask.classList.add("complete")
+        }else{
+            containerTask.classList.remove("complete")
+        }
     });
 }
 

@@ -9,6 +9,7 @@ import { containerPage, renderFolders } from "./UI/loadFolder.js";
 import { obtainDataTask, formTask, addNewTask } from "./UI/addTask.js";
 import { delateTasks } from "./UI/removeTask.js";
 import "./UI/removeFolder.js";
+import "./UI/taskComplete.js"
 
 let añadir = document.getElementById("añadir");
 

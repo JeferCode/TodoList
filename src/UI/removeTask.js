@@ -9,7 +9,7 @@ export function delateTasks(element, id) {
 
 containerPage.addEventListener("click", (e)=>{
     if(e.target.classList.contains("delate")){
-        let element = e.target.closest(".container-tast");
+        let element = e.target.closest(".container-task");
         let id = element.dataset.idtask;
         console.log(id)
         let idFolder = containerPage.dataset.page;
