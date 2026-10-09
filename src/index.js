@@ -12,7 +12,8 @@ import "./UI/removeFolder.js";
 import "./UI/taskStatus.js"
 
 const btnAdd = document.getElementById("añadir");
-const btnCancel = document.getElementById("cancel-task")
+const btnCancel = document.getElementById("cancel-task");
+const btnCancelFolder = document.getElementById("cancel-folder");
 
 btnAdd.addEventListener("click", () => {
     visibleForm()
@@ -65,6 +66,11 @@ formTask.addEventListener("submit", (e) => {
 btnCancel.addEventListener("click", ()=>{
     formTask.reset();
     hiddenFormTask();
+})
+
+btnCancelFolder.addEventListener("click", ()=>{
+    form.reset();
+    hiddenForm();
 })
 
 
