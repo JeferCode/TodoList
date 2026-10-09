@@ -14,7 +14,6 @@ export function renderPage(data) {
 
 export function renderTasks(task) {
     task.forEach(element => {
-        console.log(element)
         const containerTask = document.createElement("div");
         containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
@@ -26,6 +25,13 @@ export function renderTasks(task) {
         }else{
             containerTask.classList.remove("complete")
         }
+        if (element.complete === false && element.priority === "low") {
+            containerTask.classList.add("lowPriority")
+        }else if (element.complete === false && element.priority === "medium") {
+            containerTask.classList.add("mediumPriority")
+        }else if (element.complete === false && element.priority === "high") {
+            containerTask.classList.add("highPriority")
+        } 
     });
 }
 
@@ -34,5 +40,5 @@ export function renderfordelate(element) {
     containerPage.innerHTML = "";
     renderPage(element);
     renderTasks(element.getAllTask());
-    console.log(element.getAllTask())
 }
+

@@ -37,7 +37,7 @@ body{
 }
 
 .complete{
-    background-color: green;
+    text-decoration: line-through;
 }
 
 .lowPriority{
@@ -48,6 +48,6 @@ body{
     background-color: rgb(102, 0, 255);
 }
 
-.heightPriority{
+.highPriority{
     background-color: rgb(255, 0, 8);
 }

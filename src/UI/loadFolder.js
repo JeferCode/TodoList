@@ -5,12 +5,9 @@ import { listContent } from "./addFolder.js";
 
 export function renderFolders() {
     let folders = converElement(load());
-    console.log("este es el folders de renderfolders: " + folders)
     if (folders !== null) {
         listContent.innerHTML = "";
         folders.forEach(element => {
-            console.log(element)
-            console.log("Creando botón con ID:", element.id);
             createElemenst(element.name, element.id)
         });
     }

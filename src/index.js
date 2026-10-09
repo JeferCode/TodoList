@@ -6,14 +6,15 @@ import "./styles.css";
 import { load, loadId, converElement } from "./storage/load.js";
 import { renderfordelate, renderPage, renderTasks } from "./UI/content.js";
 import { containerPage, renderFolders } from "./UI/loadFolder.js";
-import { obtainDataTask, formTask, addNewTask } from "./UI/addTask.js";
+import { obtainDataTask, formTask, addNewTask, hiddenFormTask } from "./UI/addTask.js";
 import { delateTasks } from "./UI/removeTask.js";
 import "./UI/removeFolder.js";
-import "./UI/taskComplete.js"
+import "./UI/taskStatus.js"
 
-let añadir = document.getElementById("añadir");
+const btnAdd = document.getElementById("añadir");
+const btnCancel = document.getElementById("cancel-task")
 
-añadir.addEventListener("click", () => {
+btnAdd.addEventListener("click", () => {
     visibleForm()
 })
 
@@ -49,7 +50,6 @@ formTask.addEventListener("submit", (e) => {
     let nFolders = load();
     let id = containerPage.dataset.page;
     let newFolders = converElement(nFolders);
-    console.log(newFolders)
     let data = obtainDataTask(formTask);
     if(data !== undefined){
         let newTask = addNewTask(data);
@@ -60,6 +60,11 @@ formTask.addEventListener("submit", (e) => {
         renderfordelate(element)
     }
 
+})
+
+btnCancel.addEventListener("click", ()=>{
+    formTask.reset();
+    hiddenFormTask();
 })
 
 

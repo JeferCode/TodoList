@@ -4,11 +4,9 @@ import { save } from "../storage/save.js";
 import { renderfordelate, renderTasks } from "./content.js";
 import { folder } from "../models/folder.js";
 
-//me gustaria camviar esta or un metodo en la clase task.
+//me gustaria canviar esta forma por un metodo en la clase task.
 
 function switchStatus(element, folder, carpeta) {
-    console.log(element)
-    console.log(carpeta)
     element.complete = !element.complete;
     save(folder)
     renderfordelate(carpeta);
