@@ -10,36 +10,38 @@
 <body>
     <header>
         <nav class="menu">
-            <button>Todos</button>
-            <button>completos</button>
-            <button>Hoy</button>
+            <div id="container-filter">
+                <button>Todos</button>
+                <button>completos</button>
+                <button id="today">Hoy</button>
+            </div>
             <p>listas</p>
             <div>
-            <div id="section-form-folder" class="hidden">
-                <form id="form-folder">
-                    <h2>ingresa el nombre de la lista:</h2>
-                    <input type="text" name="name" placeholder="New List">
-                    <button type="submit" id="create-folder">Crear</button>
-                    <button type="button" id="cancel-folder">cancelar</button>
-                </form>
+                <div id="section-form-folder" class="hidden">
+                    <form id="form-folder">
+                        <h2>ingresa el nombre de la lista:</h2>
+                        <input type="text" name="name" placeholder="New List">
+                        <button type="submit" id="create-folder">Crear</button>
+                        <button type="button" id="cancel-folder">cancelar</button>
+                    </form>
+                </div>
+                <div id="section-form-task" class="hidden" data-complete="false">
+                    <form id="form-task">
+                        <h2>ingresa la informacion de la tarea:</h2>
+                        <input type="text" name="title" placeholder="title">
+                        <input type="text" name="description" placeholder="description">
+                        <input type="date" name="dueDate" placeholder="date">
+                        <label for="priority">prioridad:</label>
+                        <select id="priority" name="priority">
+                            <option value="low">baja</option>
+                            <option value="medium">media</option>
+                            <option value="high">alta</option>
+                        </select>
+                        <button type="submit" id="create-task">Crear</button>
+                        <button type="button" id="cancel-task">cancelar</button>
+                    </form>
+                </div>
             </div>
-            <div id="section-form-task" class="hidden" data-complete="false">
-                <form id="form-task">
-                    <h2>ingresa la informacion de la tarea:</h2>
-                    <input type="text" name="title" placeholder="title">
-                    <input type="text" name="description" placeholder="description">
-                    <input type="date" name="dueDate" placeholder="date">
-                    <label for="priority">prioridad:</label>
-                    <select id="priority" name="priority">
-                        <option value="low">baja</option>
-                        <option value="medium">media</option>
-                        <option value="high">alta</option>
-                    </select>
-                    <button type="submit" id="create-task">Crear</button>
-                    <button type="button" id="cancel-task">cancelar</button>
-                </form>
-            </div>
-        </div>
             <ul id="list-content">
             </ul>
             <button id="añadir">añadir</button>

@@ -6,11 +6,13 @@ export const formTask = document.getElementById("form-task");
 import { containerPage } from "./loadFolder.js";
 
 export function addNewTask(data) {
-    let elementask = new task(crypto.randomUUID(), data.title, data.description, data.date, data.priority, false);
+    let elementask = new task(crypto.randomUUID(), data.title, data.description, data.date, data.priority, false, data.folderId);
     return elementask;
 }
 
 export function obtainDataTask(form) {
+    let folderId = containerPage.dataset.page;
+    console.log(folderId)
     let data = new FormData(form);
     let title = data.get("title").trim()
     let description = data.get("description").trim()
@@ -23,7 +25,8 @@ export function obtainDataTask(form) {
             title,
             description,
             date,
-            priority
+            priority,
+            folderId
         };
     }
 }

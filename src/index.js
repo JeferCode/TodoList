@@ -9,7 +9,9 @@ import { containerPage, renderFolders } from "./UI/loadFolder.js";
 import { obtainDataTask, formTask, addNewTask, hiddenFormTask } from "./UI/addTask.js";
 import { delateTasks } from "./UI/removeTask.js";
 import "./UI/removeFolder.js";
-import "./UI/taskStatus.js"
+import "./UI/taskStatus.js";
+import "./UI/filterTasks.js";
+import "./UI/filterToday.js"
 
 const btnAdd = document.getElementById("añadir");
 const btnCancel = document.getElementById("cancel-task");
