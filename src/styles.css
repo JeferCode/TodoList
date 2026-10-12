@@ -51,3 +51,8 @@ body{
 .highPriority{
     background-color: rgb(255, 0, 8);
 }
+
+#container-filter{
+    display: flex;
+    flex-direction: column;
+}

@@ -4,7 +4,7 @@ import { save } from "../storage/save.js";
 import { renderfordelate, renderTasks } from "./content.js";
 import { folder } from "../models/folder.js";
 
-//me gustaria canviar esta forma por un metodo en la clase task.
+//necesito cambiar el renderizado de la pagina cuando se cambia el estado de la tarea en el filtro.
 
 function switchStatus(element, folder, carpeta) {
     element.complete = !element.complete;
@@ -12,23 +12,31 @@ function switchStatus(element, folder, carpeta) {
     renderfordelate(carpeta);
 }
 
-function obtainData(id) {
+function obtainData() {
     let folders = load();
     let data = converElement(folders);
-    let uniqueElement = loadId(data, id);
-    return {
-        uniqueElement,
-        data
-    };
+    return data;
 }
 
 containerPage.addEventListener("click", (e) => {
     if (e.target.classList.contains("SwitchStatus")) {
         let element = e.target.closest(".container-task");
         let id = element.dataset.idtask;
-        let idFolder = containerPage.dataset.page;
-        let data = obtainData(idFolder);
-        let ultimateData = data.uniqueElement.getTask(id);
-        switchStatus(ultimateData, data.data, data.uniqueElement);
+        let data = obtainData();
+        let task = obtainTask(id, data)
+        let idFolder = task.folder;
+        let uniqueElement = loadId(data, idFolder);
+        console.log(uniqueElement)
+        switchStatus(task, data, uniqueElement);
     }
 })
+
+function obtainTask(id, data) {
+    let tasksData = data.flatMap(element => {
+        return element.getAllTask();
+    });
+    console.log(tasksData)
+    let task = tasksData.find(e => e.id === id)
+    return task;
+}
+

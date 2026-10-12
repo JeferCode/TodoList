@@ -1,4 +1,4 @@
-import { format, isToday, parseISO } from "date-fns";
+import { format, isDate, isToday, parseISO } from "date-fns";
 import { folder } from "../models/folder.js";
 import { load, converElement } from "../storage/load.js";
 
@@ -9,6 +9,7 @@ function loadDataConvert() {
         let tasks = element.getAllTask();
         return tasks;
     });
+    console.log(data)
     return data;
 }
 
@@ -18,9 +19,11 @@ function loadDataConvert() {
     let data = loadDataConvert();
     let result = [];
     let dates = data.map(element => {
-        let date = format(new Date(parseISO(element.dueDate)), "dd/MM/yyyy");
-        result.push(isToday(date))
-        return date;
+        let date = parseISO(element.dueDate);
+        let elementDate = new Date(date);
+        console.log(elementDate)
+        result.push(isToday(elementDate))
+        return elementDate;
     })
     return filterToday(data, dates, result)
 }
@@ -29,9 +32,9 @@ function filterToday(tasksData, dates, result) {
     let elements = [];
     for (let i = 0; i < result.length; i++) {
         if (result[i] === true) {
-            elements = tasksData.filter(element => format(parseISO(element.dueDate), "dd/MM/yyyy") === dates[i]);
-            return elements;
+            elements.push(tasksData[i])
         }
     }
+    console.log(elements)
     return elements;
 }
