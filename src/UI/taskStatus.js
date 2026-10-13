@@ -1,15 +1,15 @@
 import { converElement, load, loadId } from "../storage/load.js";
 import { containerPage } from "./loadFolder.js";
 import { save } from "../storage/save.js";
-import { renderfordelate, renderTasks } from "./content.js";
-import { folder } from "../models/folder.js";
+import { renderfordelate, renderTasks, showTaskToday } from "./content.js";
+import { createDate, filterComplete } from "./filterTasks.js";
 
-//necesito cambiar el renderizado de la pagina cuando se cambia el estado de la tarea en el filtro.
+//para el filtro de 7 dias puede ser que sile sumo 1 y es mas que 7 entonses no se pone si es menos si se pone.
+//el filtro complete finciona, pero al cambiar el estado, cambia de pagina a la pagina filtro de hoy, por que el data set de complete tambien es filter.
 
-function switchStatus(element, folder, carpeta) {
+function switchStatus(element, folders) {
     element.complete = !element.complete;
-    save(folder)
-    renderfordelate(carpeta);
+    save(folders);
 }
 
 function obtainData() {
@@ -19,24 +19,40 @@ function obtainData() {
 }
 
 containerPage.addEventListener("click", (e) => {
-    if (e.target.classList.contains("SwitchStatus")) {
-        let element = e.target.closest(".container-task");
-        let id = element.dataset.idtask;
-        let data = obtainData();
-        let task = obtainTask(id, data)
-        let idFolder = task.folder;
-        let uniqueElement = loadId(data, idFolder);
-        console.log(uniqueElement)
-        switchStatus(task, data, uniqueElement);
+    if (e.target.classList.contains("SwitchStatus") && containerPage.dataset.page === "filterToday") {
+        getElements(e)
+        showTaskToday(createDate())
+    } else if (e.target.classList.contains("SwitchStatus") && containerPage.dataset.page === "filterComplete") {
+        getElements(e);
+        showTaskToday(filterComplete())
+    } else if (e.target.classList.contains("SwitchStatus")) {
+        let uniqueElement = getElements(e)
+        renderfordelate(uniqueElement)
     }
 })
+
+
+function getElements(e) {
+    let element = e.target.closest(".container-task");
+    if (!element) {
+        return;
+    }
+    let id = element.dataset.idtask;
+    let data = obtainData();
+    let task = obtainTask(id, data)
+    if (!task) {
+        return
+    }
+    let idFolder = task.folder;
+    let uniqueElement = loadId(data, idFolder);
+    switchStatus(task, data);
+    return uniqueElement;
+}
 
 function obtainTask(id, data) {
     let tasksData = data.flatMap(element => {
         return element.getAllTask();
     });
-    console.log(tasksData)
-    let task = tasksData.find(e => e.id === id)
+    let task = tasksData.find(e => e.id === id);
     return task;
 }
-

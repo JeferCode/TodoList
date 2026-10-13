@@ -1,18 +1,20 @@
 import { containerPage } from "./loadFolder.js";
 
 export function renderPage(data) {
-    const title = document.createElement("h2");
+    let title = rendertitle(data);
     const añadirTarea = document.createElement("button");
     const btnDelateFolder = document.createElement("button");
     btnDelateFolder.id = "delate-folder";
     btnDelateFolder.textContent = "Eliminar lista";
     añadirTarea.classList.add("add-tarea")
     añadirTarea.textContent = "añadir tarea"
-    title.textContent = data.name;
+    
     containerPage.append(title, añadirTarea, btnDelateFolder);
 }
 
 export function renderTasks(task) {
+    console.log("este es task: ")
+    console.log(task)
     task.forEach(element => {
         const containerTask = document.createElement("div");
         containerTask.classList.add("container-task")
@@ -20,21 +22,23 @@ export function renderTasks(task) {
         containerTask.innerHTML = `<h3>${element.title}</h3> <p>${element.description}</p> 
         <h4>${element.priority}</h4> <p>${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
         containerPage.append(containerTask);
-        if (element.complete) {
-            containerTask.classList.add("complete")
-        }else{
-            containerTask.classList.remove("complete")
-        }
-        if (element.complete === false && element.priority === "low") {
-            containerTask.classList.add("lowPriority")
-        }else if (element.complete === false && element.priority === "medium") {
-            containerTask.classList.add("mediumPriority")
-        }else if (element.complete === false && element.priority === "high") {
-            containerTask.classList.add("highPriority")
-        } 
+        CompletePriority(containerTask, element)
     });
 }
-
+export function CompletePriority(container, element) {
+    if (element.complete) {
+            container.classList.add("complete")
+        }else{
+            container.classList.remove("complete")
+        }
+        if (element.priority === "low") {
+            container.classList.add("lowPriority")
+        }else if (element.priority === "medium") {
+            container.classList.add("mediumPriority")
+        }else if (element.priority === "high") {
+            container.classList.add("highPriority")
+        } 
+}
 
 export function renderfordelate(element) {
     containerPage.innerHTML = "";
@@ -42,3 +46,13 @@ export function renderfordelate(element) {
     renderTasks(element.getAllTask());
 }
 
+export function rendertitle(data) {
+    const title = document.createElement("h2");
+    title.textContent = data.name;
+    return title;
+}
+
+export function showTaskToday(date) {
+    containerPage.innerHTML = "";
+    renderTasks(date)
+}

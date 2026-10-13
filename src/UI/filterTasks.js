@@ -1,6 +1,8 @@
 import { format, isDate, isToday, parseISO } from "date-fns";
 import { folder } from "../models/folder.js";
 import { load, converElement } from "../storage/load.js";
+import { showTaskToday } from "./content.js";
+import { save } from "../storage/save.js";
 
 function loadDataConvert() {
     let folders = load();
@@ -9,11 +11,8 @@ function loadDataConvert() {
         let tasks = element.getAllTask();
         return tasks;
     });
-    console.log(data)
     return data;
 }
-
-
 
  export function createDate() {
     let data = loadDataConvert();
@@ -21,7 +20,6 @@ function loadDataConvert() {
     let dates = data.map(element => {
         let date = parseISO(element.dueDate);
         let elementDate = new Date(date);
-        console.log(elementDate)
         result.push(isToday(elementDate))
         return elementDate;
     })
@@ -35,6 +33,13 @@ function filterToday(tasksData, dates, result) {
             elements.push(tasksData[i])
         }
     }
-    console.log(elements)
     return elements;
+}
+
+export function filterComplete() {
+    let data = loadDataConvert();
+    console.log("esto es data: ")
+    console.log(data)
+    let result = data.filter(e => e.complete === true);
+    return result;
 }

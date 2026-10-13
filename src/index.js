@@ -4,14 +4,14 @@ import { add, save } from "./storage/save.js"
 import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent } from "./UI/addFolder.js"
 import "./styles.css";
 import { load, loadId, converElement } from "./storage/load.js";
-import { renderfordelate, renderPage, renderTasks } from "./UI/content.js";
+import { renderfordelate } from "./UI/content.js";
 import { containerPage, renderFolders } from "./UI/loadFolder.js";
 import { obtainDataTask, formTask, addNewTask, hiddenFormTask } from "./UI/addTask.js";
 import { delateTasks } from "./UI/removeTask.js";
 import "./UI/removeFolder.js";
 import "./UI/taskStatus.js";
 import "./UI/filterTasks.js";
-import "./UI/filterToday.js"
+import "./UI/filter.js"
 
 const btnAdd = document.getElementById("añadir");
 const btnCancel = document.getElementById("cancel-task");
