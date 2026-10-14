@@ -1,5 +1,5 @@
 export class task{
-    constructor(id, title, description, dueDate, priority, checklist, folder){
+    constructor(id, title, description, dueDate, priority, checklist, folder, folderName){
         this.id = id
         this.title = title,
         this.description = description,
@@ -7,6 +7,7 @@ export class task{
         this.priority = priority,
         this.complete = checklist,
         this.folder = folder
+        this.folderName = folderName
     }
 
     switchComplete(){

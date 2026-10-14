@@ -1,7 +1,8 @@
 import { containerPage } from "./loadFolder.js";
 
 export function renderPage(data) {
-    let title = rendertitle(data);
+    console.log(data)
+    let title = rendertitle(data.name);
     const añadirTarea = document.createElement("button");
     const btnDelateFolder = document.createElement("button");
     btnDelateFolder.id = "delate-folder";
@@ -12,15 +13,43 @@ export function renderPage(data) {
     containerPage.append(title, añadirTarea, btnDelateFolder);
 }
 
-export function renderTasks(task) {
-    console.log("este es task: ")
-    console.log(task)
+export function renderTasksForDelate(task) {
     task.forEach(element => {
         const containerTask = document.createElement("div");
         containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
-        containerTask.innerHTML = `<h3>${element.title}</h3> <p>${element.description}</p> 
-        <h4>${element.priority}</h4> <p>${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
+        containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
+        <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
+        containerPage.append(containerTask);
+        CompletePriority(containerTask, element)
+    });
+}
+
+export function renderTasks(task, name) {
+    console.log(name)
+    let title = rendertitle(name)
+    containerPage.append(title)
+    task.forEach(element => {
+        const containerTask = document.createElement("div");
+        containerTask.classList.add("container-task")
+        containerTask.dataset.idtask = element.id;
+        containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
+        <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
+        containerPage.append(containerTask);
+        CompletePriority(containerTask, element)
+    });
+}
+
+export function renderTasksForAll(task, name) {
+    console.log(task)
+    let title = rendertitle(name)
+    containerPage.append(title)
+    task.forEach(element => {
+        const containerTask = document.createElement("div");
+        containerTask.classList.add("container-task")
+        containerTask.dataset.idtask = element.id;
+        containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
+        <h4>carpeta: ${element.folderName}</h4> <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
         containerPage.append(containerTask);
         CompletePriority(containerTask, element)
     });
@@ -43,16 +72,22 @@ export function CompletePriority(container, element) {
 export function renderfordelate(element) {
     containerPage.innerHTML = "";
     renderPage(element);
-    renderTasks(element.getAllTask());
+    renderTasksForDelate(element.getAllTask());
 }
 
 export function rendertitle(data) {
     const title = document.createElement("h2");
-    title.textContent = data.name;
+    console.log(data)
+    title.textContent = data;
     return title;
 }
 
-export function showTaskToday(date) {
+export function showTaskToday(date, title) {
     containerPage.innerHTML = "";
-    renderTasks(date)
+    renderTasks(date, title)
+}
+
+export function showAllTask(date, title) {
+    containerPage.innerHTML = "";
+    renderTasksForAll(date, title)
 }

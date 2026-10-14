@@ -37,6 +37,7 @@ form.addEventListener("submit", (e) => {
 listContent.addEventListener("click", (e) => {
     if (e.target.classList.contains("folder")) {
         containerPage.dataset.page = e.target.dataset.id;
+        containerPage.dataset.name = e.target.textContent;
         containerPage.innerHTML = "";
         let Id = e.target.dataset.id;
         let idpage = containerPage.dataset.page;

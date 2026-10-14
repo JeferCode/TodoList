@@ -18,3 +18,11 @@ export function converElement(array){
         return objet;
     })
 }
+
+export function converElementforDelate(array){
+    return array.flatMap((element)=>{
+        let objet = new folder(element.name, element.id)
+        objet.tasks = element.tasks;
+        return objet;
+    })
+}

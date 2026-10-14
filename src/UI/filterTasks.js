@@ -38,8 +38,11 @@ function filterToday(tasksData, dates, result) {
 
 export function filterComplete() {
     let data = loadDataConvert();
-    console.log("esto es data: ")
-    console.log(data)
     let result = data.filter(e => e.complete === true);
     return result;
+}
+
+export function filterAll() {
+    let data = loadDataConvert();
+    return data;
 }
