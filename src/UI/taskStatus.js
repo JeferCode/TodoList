@@ -2,7 +2,7 @@ import { converElement, load, loadId } from "../storage/load.js";
 import { containerPage } from "./loadFolder.js";
 import { save } from "../storage/save.js";
 import { renderfordelate, renderTasks, showAllTask, showTaskToday } from "./content.js";
-import { createDate, filterComplete } from "./filterTasks.js";
+import { createDate, filterAll, filterComplete } from "./filterTasks.js";
 import { btnFilterToday, btnFilterComplete, btnFilterAll, obtainTitle } from "./filter.js";
 
 //para el filtro de 7 dias puede ser que sile sumo 1 y es mas que 7 entonses no se pone si es menos si se pone.
@@ -31,7 +31,7 @@ containerPage.addEventListener("click", (e) => {
     }else if (e.target.classList.contains("SwitchStatus") && containerPage.dataset.page === "filterAll") {
         getElements(e);
         let title = obtainTitle(btnFilterAll);
-        showAllTask(filterComplete(), title);
+        showAllTask(filterAll(), title);
     } else if (e.target.classList.contains("SwitchStatus")) {
         let uniqueElement = getElements(e);
         renderfordelate(uniqueElement);
