@@ -4,6 +4,7 @@ import { load, loadId } from "../storage/load.js";
 const containerFormTask = document.getElementById("section-form-task");
 export const formTask = document.getElementById("form-task");
 import { containerPage } from "./loadFolder.js";
+export const modal = document.getElementById("modal");
 
 export function addNewTask(data) {
     let elementask = new task(crypto.randomUUID(), data.title, data.description, data.date, data.priority, false, data.folderId, data.folderName);
@@ -40,10 +41,12 @@ containerPage.addEventListener("click", (e) => {
 })
 
 export function visibleFormTask() {
+    modal.classList.remove("hidden")
     containerFormTask.classList.remove("hidden")
 }
 
 
 export function hiddenFormTask() {
+    modal.classList.add("hidden")
     containerFormTask.classList.add("hidden")
 }

@@ -4,6 +4,9 @@ import { load, converElement } from "../storage/load.js";
 import { showTaskToday } from "./content.js";
 import { save } from "../storage/save.js";
 
+//talvez agregarle un filtro para tareas cuyas fechas ya venccieron, en este apartado no importa si una tarea esta completa o no(o quisas mejor si),
+//solo importa si la fecha de la tarea ya paso o no.
+
 function loadDataConvert() {
     let folders = load();
     let converFolders = converElement(folders)

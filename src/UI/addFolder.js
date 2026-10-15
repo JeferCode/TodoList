@@ -5,6 +5,7 @@ import { save } from "../storage/save.js";
 let formFolder = document.getElementById("section-form-folder");
 let createFolder = document.getElementById("create-folder");
 export let form = document.getElementById("form-folder")
+import { modal } from "./addTask.js";
 
 
 export function addFolder(name) {
@@ -23,10 +24,12 @@ export function obtainName(formulario) {
 }
 
 export function visibleForm() {
+    modal.classList.remove("hidden")
     formFolder.classList.remove("hidden")
 }
 
 
 export function hiddenForm() {
+    modal.classList.add("hidden")
     formFolder.classList.add("hidden")
 }

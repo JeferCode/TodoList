@@ -77,7 +77,4 @@ btnCancelFolder.addEventListener("click", ()=>{
 })
 
 
-
-
-
 renderFolders()
