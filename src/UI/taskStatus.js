@@ -5,8 +5,6 @@ import { renderfordelate, renderTasks, showAllTask, showTaskToday } from "./cont
 import { createDate, filterAll, filterComplete } from "./filterTasks.js";
 import { btnFilterToday, btnFilterComplete, btnFilterAll, obtainTitle } from "./filter.js";
 
-//para el filtro de 7 dias puede ser que sile sumo 1 y es mas que 7 entonses no se pone si es menos si se pone.
-//el filtro complete finciona, pero al cambiar el estado, cambia de pagina a la pagina filtro de hoy, por que el data set de complete tambien es filter.
 
 function switchStatus(element, folders) {
     element.complete = !element.complete;

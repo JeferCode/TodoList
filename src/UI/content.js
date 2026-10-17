@@ -19,7 +19,8 @@ export function renderTasksForDelate(task) {
         containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
         containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
-        <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
+        <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
+        <button class="edit">Editar</button>`
         containerPage.append(containerTask);
         CompletePriority(containerTask, element)
     });
@@ -34,7 +35,8 @@ export function renderTasks(task, name) {
         containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
         containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
-        <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
+        <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
+        <button class="edit">Editar</button>`
         containerPage.append(containerTask);
         CompletePriority(containerTask, element)
     });
