@@ -51,7 +51,9 @@ export function renderTasksForAll(task, name) {
         containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
         containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
-        <h4>carpeta: ${element.folderName}</h4> <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>`
+        <h4>carpeta: ${element.folderName}</h4> <p>fecha limite: ${element.dueDate}
+        </p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
+        <button class="edit">Editar</button>`
         containerPage.append(containerTask);
         CompletePriority(containerTask, element)
     });

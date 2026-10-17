@@ -11,7 +11,7 @@ function switchStatus(element, folders) {
     save(folders);
 }
 
-function obtainData() {
+export function obtainData() {
     let folders = load();
     let data = converElement(folders);
     return data;
@@ -33,6 +33,8 @@ containerPage.addEventListener("click", (e) => {
     } else if (e.target.classList.contains("SwitchStatus")) {
         let uniqueElement = getElements(e);
         renderfordelate(uniqueElement);
+    }else if(e.target.classList.contains("edit")){
+        editTask(e);
     }
 })
 
@@ -61,3 +63,17 @@ export function obtainTask(id, data) {
     let task = tasksData.find(e => e.id === id);
     return task;
 }
+
+
+////////////editar tarea ////////
+
+
+function editTask(e) {
+    let element = e.target.closest(".container-task");
+    console.log(element)
+    let id = element.dataset.idtask;
+    console.log(id)
+
+}
+
+

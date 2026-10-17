@@ -1,9 +1,13 @@
 import { folder } from "../models/folder.js";
 import { task } from "../models/task.js";
 import { load, loadId } from "../storage/load.js";
+import { form } from "./addFolder.js";
+import { obtainTask, obtainData } from "./taskStatus.js";
 const containerFormTask = document.getElementById("section-form-task");
 export const formTask = document.getElementById("form-task");
 import { containerPage } from "./loadFolder.js";
+import { save } from "../storage/save.js";
+import { delateTasks } from "./removeTask.js";
 export const modal = document.getElementById("modal");
 
 export function addNewTask(data) {
@@ -37,6 +41,20 @@ export function obtainDataTask(form) {
 containerPage.addEventListener("click", (e) => {
     if (e.target.classList.contains("add-tarea")) {
         visibleFormTask()
+    } else if (e.target.classList.contains("edit")) {
+        let element = e.target.closest(".container-task");
+        let id = element.dataset.idtask;
+        let data = obtainData();
+        let task = obtainTask(id, data);
+        let folder = loadId(data, task.folder);
+        formTask.title.value = task.title;
+        formTask.description.value = task.description;
+        console.log(formTask)
+        formTask.dueDate.value = task.dueDate;
+        formTask.priority.value = task.priority;
+        delateTasks(folder, id);
+        visibleFormTask()
+        save(data)
     }
 })
 
