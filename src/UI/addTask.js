@@ -16,7 +16,7 @@ export function addNewTask(data) {
 }
 
 export function obtainDataTask(form) {
-    let folderId = containerPage.dataset.page;
+    let folderId = containerPage.dataset.id;
     let folderName = containerPage.dataset.name;
     let data = new FormData(form);
     let title = data.get("title").trim()
@@ -40,23 +40,27 @@ export function obtainDataTask(form) {
 
 containerPage.addEventListener("click", (e) => {
     if (e.target.classList.contains("add-tarea")) {
+        formTask.dataset.folder = "";
         visibleFormTask()
     } else if (e.target.classList.contains("edit")) {
         let element = e.target.closest(".container-task");
         let id = element.dataset.idtask;
         let data = obtainData();
         let task = obtainTask(id, data);
+        formTask.dataset.folder = task.folder;
+        formTask.dataset.id = task.id;
         let folder = loadId(data, task.folder);
         formTask.title.value = task.title;
         formTask.description.value = task.description;
         console.log(formTask)
         formTask.dueDate.value = task.dueDate;
         formTask.priority.value = task.priority;
-        delateTasks(folder, id);
         visibleFormTask()
-        save(data)
     }
 })
+
+//cunado edito una tarea, y esta esta completa, al terminar de editarla, cambia a incompleta de nuevo, esto sucede por que,
+//la tarea anterior que estaba completa se elimina, esta es una nueva tarea.
 
 export function visibleFormTask() {
     modal.classList.remove("hidden")

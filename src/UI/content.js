@@ -75,6 +75,7 @@ export function CompletePriority(container, element) {
 
 export function renderfordelate(element) {
     containerPage.innerHTML = "";
+    console.log(element)
     renderPage(element);
     renderTasksForDelate(element.getAllTask());
 }

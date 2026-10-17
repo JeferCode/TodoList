@@ -1,4 +1,3 @@
-import { id } from "date-fns/locale";
 import { converElement, load, loadId } from "../storage/load.js";
 import { containerPage, renderFolders } from "./loadFolder.js";
 import { save } from "../storage/save.js";

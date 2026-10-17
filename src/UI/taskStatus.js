@@ -32,15 +32,17 @@ containerPage.addEventListener("click", (e) => {
         showAllTask(filterAll(), title);
     } else if (e.target.classList.contains("SwitchStatus")) {
         let uniqueElement = getElements(e);
+        console.log(uniqueElement)
         renderfordelate(uniqueElement);
-    }else if(e.target.classList.contains("edit")){
-        editTask(e);
     }
 })
 
+//la carpeta cambia a los filtros, tengo que buscar en que lugar se establece la id de la carpeta para corregirlo.
 
 function getElements(e) {
+    console.log("este es element: ")
     let element = e.target.closest(".container-task");
+    console.log(element)
     if (!element) {
         return;
     }
@@ -50,9 +52,9 @@ function getElements(e) {
     if (!task) {
         return
     }
+    switchStatus(task, data);
     let idFolder = task.folder;
     let uniqueElement = loadId(data, idFolder);
-    switchStatus(task, data);
     return uniqueElement;
 }
 
@@ -70,10 +72,7 @@ export function obtainTask(id, data) {
 
 function editTask(e) {
     let element = e.target.closest(".container-task");
-    console.log(element)
     let id = element.dataset.idtask;
-    console.log(id)
-
 }
 
 
