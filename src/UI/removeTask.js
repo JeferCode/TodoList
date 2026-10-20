@@ -20,6 +20,7 @@ containerPage.addEventListener("click", (e) => {
         let elementFolderUNique = loadId(folders, idFolder.folder);
         delateTasks(elementFolderUNique, idFolder.id)
         save(folders)
+        renderfordelate(elementFolderUNique)
         if (containerPage.dataset.page === "filterToday") {
             console.log("esto es createDate: ")
             console.log(createDate());

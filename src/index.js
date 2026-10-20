@@ -40,6 +40,7 @@ listContent.addEventListener("click", (e) => {
         containerPage.dataset.page = e.target.dataset.id;
         containerPage.dataset.name = e.target.textContent;
         containerPage.dataset.id = e.target.dataset.id;
+        formTask.dataset.id = e.target.dataset.id;
         containerPage.innerHTML = "";
         let Id = e.target.dataset.id;
         let idpage = containerPage.dataset.page;
