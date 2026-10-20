@@ -12,7 +12,7 @@ import "./UI/removeFolder.js";
 import "./UI/taskStatus.js";
 import "./UI/filterTasks.js";
 import "./UI/filter.js"
-import { obtainData } from "./UI/taskStatus.js";
+import { obtainData, obtainTask } from "./UI/taskStatus.js";
 
 const btnAdd = document.getElementById("añadir");
 const btnCancel = document.getElementById("cancel-task");
@@ -55,39 +55,31 @@ listContent.addEventListener("click", (e) => {
 formTask.addEventListener("submit", (e) => {
     e.preventDefault();
     if (formTask.dataset.folder === "") {
-        let nFolders = load();
+        let Folders = obtainData();
         let id = containerPage.dataset.page;
-        let newFolders = converElement(nFolders);
         let data = obtainDataTask(formTask);
         if (data !== undefined) {
             let newTask = addNewTask(data);
-            let element = loadId(newFolders, id);
+            let element = loadId(Folders, id);
             element.addTask(newTask)
-            save(newFolders);
+            save(Folders);
             formTask.reset();
             renderfordelate(element)
         }
     } else {
-        let nFolders = obtainData();
+        let Folders = obtainData();
         let folderId = formTask.dataset.folder;
         let id = formTask.dataset.id;
-        console.log("esta es taskId: ")
         let data = obtainDataTask(formTask);
-        console.log("este es data: ")
-        console.log(data)
         if (data !== undefined) {
-            let newTask = addNewTask(data);
-            console.log("este es newTask: ")
-            console.log(newTask)
-            if (data.complete === true) {
-                newTask.complete = true
-            }
-            console.log("este es newTask2: ")
-            console.log(newTask)
-            let element = loadId(nFolders, folderId);
-            element.addTask(newTask)
-            element.removeTask(id)
-            save(nFolders);
+            let element = loadId(Folders, folderId);
+            let idtask = formTask.dataset.task;
+            let task = obtainTask(idtask, Folders)
+            task.title = data.title;
+            task.description = data.description;
+            task.dueDate = data.date;
+            task.priority = data.priority;
+            save(Folders);
             formTask.reset();
             renderfordelate(element)
         }
