@@ -8,6 +8,7 @@ export const formTask = document.getElementById("form-task");
 import { containerPage } from "./loadFolder.js";
 import { save } from "../storage/save.js";
 import { delateTasks } from "./removeTask.js";
+import { fillTaskForm } from "./Edit.js";
 export const modal = document.getElementById("modal");
 
 export function addNewTask(data) {
@@ -22,7 +23,6 @@ export function obtainDataTask(form) {
     let title = data.get("title").trim()
     let description = data.get("description").trim()
     let date = data.get("dueDate").trim()
-    console.log(date)
     let priority = data.get("priority")
     if (title !== "" && description !== "" && date !== "") {
         hiddenFormTask();
@@ -50,18 +50,6 @@ containerPage.addEventListener("click", (e) => {
     }
 })
 
-function fillTaskForm(element) {
-    let id = element.dataset.idtask;
-    let data = obtainData();
-    let task = obtainTask(id, data);
-    formTask.dataset.task = id;
-    formTask.dataset.folder = task.folder;
-    formTask.dataset.id = task.id;
-    formTask.title.value = task.title;
-    formTask.description.value = task.description;
-    formTask.dueDate.value = task.dueDate;
-    formTask.priority.value = task.priority;
-}
 
 export function visibleFormTask() {
     modal.classList.remove("hidden")

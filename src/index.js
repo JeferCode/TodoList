@@ -4,7 +4,7 @@ import { add, save } from "./storage/save.js"
 import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent } from "./UI/addFolder.js"
 import "./styles.css";
 import { load, loadId, converElement } from "./storage/load.js";
-import { renderfordelate } from "./UI/content.js";
+import { renderfordelate, renderPage } from "./UI/content.js";
 import { containerPage, renderFolders } from "./UI/loadFolder.js";
 import { obtainDataTask, formTask, addNewTask, hiddenFormTask } from "./UI/addTask.js";
 import { delateTasks } from "./UI/removeTask.js";
@@ -19,17 +19,32 @@ const btnCancel = document.getElementById("cancel-task");
 const btnCancelFolder = document.getElementById("cancel-folder");
 
 btnAdd.addEventListener("click", () => {
+    form.dataset.folder = "";
     visibleForm()
 })
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let name = obtainName(form)
-    if (name !== undefined) {
-        let addData = addFolder(name);
-        add(addData)
-        form.reset();
-        renderFolders()
+    let dataFolder = obtainData();
+    let id = containerPage.dataset.page;
+    let folder = loadId(dataFolder, id);
+    if (form.dataset.folder === "") {
+        let name = obtainName(form)
+        if (name !== undefined) {
+            let addData = addFolder(name);
+            add(addData)
+            form.reset();
+            renderFolders()
+        }
+    }else{
+        let dataForm = obtainName(form);
+        if (dataForm !== undefined) {
+            folder.name = dataForm;
+            save(dataFolder);
+            form.reset();
+            renderFolders();
+            renderfordelate(folder)
+        }
     }
 })
 

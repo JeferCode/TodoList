@@ -5,12 +5,15 @@ export function renderPage(data) {
     let title = rendertitle(data.name);
     const añadirTarea = document.createElement("button");
     const btnDelateFolder = document.createElement("button");
+    const btnEditeFolder = document.createElement("button");
     btnDelateFolder.id = "delate-folder";
     btnDelateFolder.textContent = "Eliminar lista";
     añadirTarea.classList.add("add-tarea")
-    añadirTarea.textContent = "añadir tarea"
+    añadirTarea.textContent = "añadir tarea";
+    btnEditeFolder.id = "edite-folder";
+    btnEditeFolder.textContent = "Editar lista"
     
-    containerPage.append(title, añadirTarea, btnDelateFolder);
+    containerPage.append(title, añadirTarea, btnEditeFolder, btnDelateFolder);
 }
 
 export function renderTasksForDelate(task) {
