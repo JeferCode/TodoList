@@ -3,17 +3,14 @@ import { containerPage } from "./loadFolder.js";
 export function renderPage(data) {
     console.log(data)
     let title = rendertitle(data.name);
+    const container = document.createElement("div");
+    container.classList.add("container-btn");
+    container.innerHTML = `<button class="btn add-tarea">añadir tarea</button> <button class="btn" id="edite-folder">Editar lista</button> 
+    <button class="btn" id="delate-folder">Eliminar lista</button>`
     const añadirTarea = document.createElement("button");
     const btnDelateFolder = document.createElement("button");
     const btnEditeFolder = document.createElement("button");
-    btnDelateFolder.id = "delate-folder";
-    btnDelateFolder.textContent = "Eliminar lista";
-    añadirTarea.classList.add("add-tarea")
-    añadirTarea.textContent = "añadir tarea";
-    btnEditeFolder.id = "edite-folder";
-    btnEditeFolder.textContent = "Editar lista"
-    
-    containerPage.append(title, añadirTarea, btnEditeFolder, btnDelateFolder);
+    containerPage.append(title, container);
 }
 
 export function renderTasksForDelate(task) {
@@ -21,9 +18,9 @@ export function renderTasksForDelate(task) {
         const containerTask = document.createElement("div");
         containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
-        containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
-        <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
-        <button class="edit">Editar</button>`
+        containerTask.innerHTML = `<div class="content-task"><h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
+        <p>fecha limite: ${element.dueDate}</p></div> <div class="btn-task"><button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
+        <button class="edit">Editar</button></div>`
         containerPage.append(containerTask);
         CompletePriority(containerTask, element)
     });
@@ -37,9 +34,9 @@ export function renderTasks(task, name) {
         const containerTask = document.createElement("div");
         containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
-        containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
-        <p>fecha limite: ${element.dueDate}</p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
-        <button class="edit">Editar</button>`
+        containerTask.innerHTML = `<div class="content-task"> <h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
+        <p>fecha limite: ${element.dueDate}</p></div> <div class="btn-task"> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
+        <button class="edit">Editar</button></div>`
         containerPage.append(containerTask);
         CompletePriority(containerTask, element)
     });
@@ -53,14 +50,15 @@ export function renderTasksForAll(task, name) {
         const containerTask = document.createElement("div");
         containerTask.classList.add("container-task")
         containerTask.dataset.idtask = element.id;
-        containerTask.innerHTML = `<h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
+        containerTask.innerHTML = `<div class="content-task"><h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
         <h4>carpeta: ${element.folderName}</h4> <p>fecha limite: ${element.dueDate}
-        </p> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
-        <button class="edit">Editar</button>`
+        </p></div><div class="btn-task"> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
+        <button class="edit">Editar</button></div>`
         containerPage.append(containerTask);
         CompletePriority(containerTask, element)
     });
 }
+
 export function CompletePriority(container, element) {
     if (element.complete) {
             container.classList.add("complete")

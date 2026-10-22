@@ -10,12 +10,12 @@ body{
 }
 
 .menu{
-    background-color: black;
+    background-color: rgb(20, 20, 20);
     display: flex;
     flex-direction: column;
     position:sticky;
     top: 0;
-    gap: 20px;
+    gap: 40px;
     width: 100%;
     height: 100vh;
     color:beige;
@@ -29,7 +29,8 @@ body{
 #list-content{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    gap: 10px;
+    margin: 20px 10px 0 10px;
 }
 
 .hidden{
@@ -55,17 +56,82 @@ body{
 #container-filter{
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    margin: 20px 10px 0 10px;
 }
 
 #container-page{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 20px;
+}
+
+#container-page h2{
+    text-align: center;
+}
+
+.btn{
+    width: 15%;
+}
+
+.add-tarea{
+    background-color: rgb(5, 77, 221);
+    padding: 5px 0;
+    font-size: 15px;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}
+
+#edite-folder{
+    background-color: rgb(221, 95, 5);
+    padding: 5px 0;
+    font-size: 15px;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}
+
+#delate-folder{
+    background-color: rgb(221, 5, 5);
+    padding: 5px 0;
+    font-size: 15px;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}
+
+.container-btn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .container-task{
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.container-task button{
+    padding: 3px 6px;
+}
+
+.content-task{
+    width: 70%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.btn-task{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
 
 #modal{
     background-color: rgba(0, 0, 0, 0.95);
@@ -114,3 +180,21 @@ body{
 #form-task button{
     width: 100px;
 }
+
+.add{
+    margin: 20px 10px 0 10px;
+}
+
+.filter, .folder, .add{
+    background-color: rgb(44, 42, 42);
+    color: white;
+    border: none;
+    font-size: 15px;
+    padding: 2px;
+}
+
+.filter:hover, .folder:hover, .add:hover{
+    background-color: rgb(236, 230, 230);
+    color: rgb(0, 0, 0);
+}
+
