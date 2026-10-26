@@ -6,12 +6,13 @@ let formFolder = document.getElementById("section-form-folder");
 let createFolder = document.getElementById("create-folder");
 export let form = document.getElementById("form-folder")
 import { modal } from "./addTask.js";
+import { htmlData } from "./content.js";
 
 
 export function addFolder(name) {
     let id = crypto.randomUUID();
-    let carpeta = new folder(name, id)
-    return carpeta;
+    let element = new folder(name, id)
+    return element;
 }
 
 export function obtainName(formulario) {
@@ -33,3 +34,13 @@ export function hiddenForm() {
     modal.classList.add("hidden")
     formFolder.classList.add("hidden")
 }
+
+export function defaulFolder() {
+    let id = "1";
+    let name = "Imbox";
+    let element = new folder(name, id)
+    return element;
+}
+
+// lo mejor es quitar la opcion de eliminar crpeta y editar crpeta de la carpeta default/inbox, esto evitara que la carpeta quede vacia, ademas
+//no veo necesario que el usuario pueda elminar esa carpeta(en su lugar podria ponerla junto a las carpetas de filtro? tal vez).

@@ -1,7 +1,7 @@
-import { containerPage } from "./loadFolder.js";
+import { containerPage, renderFolders } from "./loadFolder.js";
+import { formTask } from "./addTask.js";
 
 export function renderPage(data) {
-    console.log(data)
     let title = rendertitle(data.name);
     const container = document.createElement("div");
     container.classList.add("container-btn");
@@ -26,24 +26,7 @@ export function renderTasksForDelate(task) {
     });
 }
 
-export function renderTasks(task, name) {
-    console.log(name)
-    let title = rendertitle(name)
-    containerPage.append(title)
-    task.forEach(element => {
-        const containerTask = document.createElement("div");
-        containerTask.classList.add("container-task")
-        containerTask.dataset.idtask = element.id;
-        containerTask.innerHTML = `<div class="content-task"> <h3>${element.title}</h3> <p>descripción: ${element.description}</p> 
-        <p>fecha limite: ${element.dueDate}</p></div> <div class="btn-task"> <button class="delate">Eliminar</button><button class="SwitchStatus">cambiar estado</button>
-        <button class="edit">Editar</button></div>`
-        containerPage.append(containerTask);
-        CompletePriority(containerTask, element)
-    });
-}
-
-export function renderTasksForAll(task, name) {
-    console.log(task)
+function renderTasks(task, name) {
     let title = rendertitle(name)
     containerPage.append(title)
     task.forEach(element => {
@@ -61,17 +44,17 @@ export function renderTasksForAll(task, name) {
 
 export function CompletePriority(container, element) {
     if (element.complete) {
-            container.classList.add("complete")
-        }else{
-            container.classList.remove("complete")
-        }
-        if (element.priority === "low") {
-            container.classList.add("lowPriority")
-        }else if (element.priority === "medium") {
-            container.classList.add("mediumPriority")
-        }else if (element.priority === "high") {
-            container.classList.add("highPriority")
-        } 
+        container.classList.add("complete")
+    } else {
+        container.classList.remove("complete")
+    }
+    if (element.priority === "low") {
+        container.classList.add("lowPriority")
+    } else if (element.priority === "medium") {
+        container.classList.add("mediumPriority")
+    } else if (element.priority === "high") {
+        container.classList.add("highPriority")
+    }
 }
 
 export function renderfordelate(element) {
@@ -88,12 +71,21 @@ export function rendertitle(data) {
     return title;
 }
 
-export function showTaskToday(date, title) {
+export function showTask(date, title) {
     containerPage.innerHTML = "";
     renderTasks(date, title)
 }
 
-export function showAllTask(date, title) {
+
+export function showDefault(title) {
     containerPage.innerHTML = "";
-    renderTasksForAll(date, title)
+    renderFolders();
+    renderPage(title)
+}
+
+export function htmlData(e) {
+    containerPage.dataset.page = e.target.dataset.id;
+    containerPage.dataset.name = e.target.textContent;
+    containerPage.dataset.id = e.target.dataset.id;
+    formTask.dataset.id = e.target.dataset.id;
 }

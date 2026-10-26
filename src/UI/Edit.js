@@ -25,7 +25,6 @@ export function fillFolderForm() {
 }
 
 containerPage.addEventListener("click", (e)=>{
-    console.log(e.target.id)
     if (e.target.id === "edite-folder") {
         let id = containerPage.dataset.page;
         form.dataset.folder = id;

@@ -4,7 +4,7 @@ import { add, save } from "./storage/save.js"
 import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent } from "./UI/addFolder.js"
 import "./styles.css";
 import { load, loadId, converElement } from "./storage/load.js";
-import { renderfordelate, renderPage } from "./UI/content.js";
+import { htmlData, renderfordelate, renderPage, showDefault } from "./UI/content.js";
 import { containerPage, renderFolders } from "./UI/loadFolder.js";
 import { obtainDataTask, formTask, addNewTask, hiddenFormTask } from "./UI/addTask.js";
 import { delateTasks } from "./UI/removeTask.js";
@@ -52,10 +52,7 @@ form.addEventListener("submit", (e) => {
 
 listContent.addEventListener("click", (e) => {
     if (e.target.classList.contains("folder")) {
-        containerPage.dataset.page = e.target.dataset.id;
-        containerPage.dataset.name = e.target.textContent;
-        containerPage.dataset.id = e.target.dataset.id;
-        formTask.dataset.id = e.target.dataset.id;
+        htmlData(e)
         containerPage.innerHTML = "";
         let Id = e.target.dataset.id;
         let idpage = containerPage.dataset.page;
@@ -113,5 +110,4 @@ btnCancelFolder.addEventListener("click", () => {
     hiddenForm();
 })
 
-
-renderFolders()
+showDefault({name: "Imbox"})

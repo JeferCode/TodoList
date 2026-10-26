@@ -1,7 +1,7 @@
 import { converElement, load, loadId } from "../storage/load.js";
 import { containerPage } from "./loadFolder.js";
 import { save } from "../storage/save.js";
-import { renderfordelate, renderTasks, showAllTask, showTaskToday } from "./content.js";
+import { renderfordelate, showTask } from "./content.js";
 import { createDate, filterAll, filterComplete } from "./filterTasks.js";
 import { btnFilterToday, btnFilterComplete, btnFilterAll, obtainTitle } from "./filter.js";
 
@@ -21,15 +21,15 @@ containerPage.addEventListener("click", (e) => {
     if (e.target.classList.contains("SwitchStatus") && containerPage.dataset.page === "filterToday") {
         getElements(e);
         let title = obtainTitle(btnFilterToday);
-        showTaskToday(createDate(), title);
+        showTask(createDate(), title);
     } else if (e.target.classList.contains("SwitchStatus") && containerPage.dataset.page === "filterComplete") {
         getElements(e);
         let title = obtainTitle(btnFilterComplete);
-        showTaskToday(filterComplete(), title);
+        showTask(filterComplete(), title);
     }else if (e.target.classList.contains("SwitchStatus") && containerPage.dataset.page === "filterAll") {
         getElements(e);
         let title = obtainTitle(btnFilterAll);
-        showAllTask(filterAll(), title);
+        showTask(filterAll(), title);
     } else if (e.target.classList.contains("SwitchStatus")) {
         let uniqueElement = getElements(e);
         console.log(uniqueElement)

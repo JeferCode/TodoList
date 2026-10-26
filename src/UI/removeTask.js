@@ -1,6 +1,6 @@
 import { containerPage } from "./loadFolder.js";
 import { converElement, load, loadId } from "../storage/load.js";
-import { renderPage, renderTasks, renderfordelate, showAllTask, showTaskToday } from "./content.js";
+import { renderPage, renderfordelate, showTask } from "./content.js";
 import { save } from "../storage/save.js";
 import { folder } from "../models/folder.js";
 import { obtainTask } from "./taskStatus.js";
@@ -25,15 +25,15 @@ containerPage.addEventListener("click", (e) => {
             console.log("esto es createDate: ")
             console.log(createDate());
             let title = obtainTitle(btnFilterToday);
-            showTaskToday(createDate(), title);
+            showTask(createDate(), title);
             console.log("esto es createDate: ")
             console.log(createDate());
         } else if (containerPage.dataset.page === "filterComplete") {
             let title = obtainTitle(btnFilterComplete);
-            showTaskToday(filterComplete(), title);
+            showTask(filterComplete(), title);
         } else if (containerPage.dataset.page === "filterAll") {
             let title = obtainTitle(btnFilterAll);
-            showAllTask(filterAll(), title);
+            showTask(filterAll(), title);
         }
     }
 })
