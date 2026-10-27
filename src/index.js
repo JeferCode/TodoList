@@ -4,7 +4,7 @@ import { add, save } from "./storage/save.js"
 import { addFolder, container, obtainName, hiddenForm, visibleForm, form, listContent } from "./UI/addFolder.js"
 import "./styles.css";
 import { load, loadId, converElement } from "./storage/load.js";
-import { htmlData, renderfordelate, renderPage, showDefault } from "./UI/content.js";
+import { htmlData, renderDefault, renderfordelate, renderPage, showDefault } from "./UI/content.js";
 import { containerPage, renderFolders } from "./UI/loadFolder.js";
 import { obtainDataTask, formTask, addNewTask, hiddenFormTask } from "./UI/addTask.js";
 import { delateTasks } from "./UI/removeTask.js";
@@ -59,6 +59,11 @@ listContent.addEventListener("click", (e) => {
         let folders = load()
         let converFolders = converElement(folders);
         let data = loadId(converFolders, Id);
+        if (data.id === "1") {
+            console.log("showdefault")
+            renderDefault(data)
+            return;
+        }
         renderfordelate(data)
     }
 })
@@ -76,6 +81,10 @@ formTask.addEventListener("submit", (e) => {
             element.addTask(newTask)
             save(Folders);
             formTask.reset();
+            if (id === "1") {
+                renderDefault(element);
+                return;
+            }
             renderfordelate(element)
         }
     } else {
@@ -110,4 +119,8 @@ btnCancelFolder.addEventListener("click", () => {
     hiddenForm();
 })
 
-showDefault({name: "Imbox"})
+let dataDefault = obtainData();
+let elementDefault = loadId(dataDefault, "1")
+
+renderDefault(elementDefault);
+renderFolders();

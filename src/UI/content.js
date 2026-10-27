@@ -7,9 +7,14 @@ export function renderPage(data) {
     container.classList.add("container-btn");
     container.innerHTML = `<button class="btn add-tarea">añadir tarea</button> <button class="btn" id="edite-folder">Editar lista</button> 
     <button class="btn" id="delate-folder">Eliminar lista</button>`
-    const añadirTarea = document.createElement("button");
-    const btnDelateFolder = document.createElement("button");
-    const btnEditeFolder = document.createElement("button");
+    containerPage.append(title, container);
+}
+
+function renderPageDefault(data) {
+    let title = rendertitle(data.name);
+    const container = document.createElement("div");
+    container.classList.add("container-btn");
+    container.innerHTML = `<button class="btn add-tarea">añadir tarea</button>`
     containerPage.append(title, container);
 }
 
@@ -42,6 +47,7 @@ function renderTasks(task, name) {
     });
 }
 
+
 export function CompletePriority(container, element) {
     if (element.complete) {
         container.classList.add("complete")
@@ -59,7 +65,6 @@ export function CompletePriority(container, element) {
 
 export function renderfordelate(element) {
     containerPage.innerHTML = "";
-    console.log(element)
     renderPage(element);
     renderTasksForDelate(element.getAllTask());
 }
@@ -80,7 +85,13 @@ export function showTask(date, title) {
 export function showDefault(title) {
     containerPage.innerHTML = "";
     renderFolders();
-    renderPage(title)
+    renderPageDefault(title)
+}
+
+export function renderDefault(element) {
+    containerPage.innerHTML = "";
+    renderPageDefault(element);
+    renderTasksForDelate(element.getAllTask());
 }
 
 export function htmlData(e) {

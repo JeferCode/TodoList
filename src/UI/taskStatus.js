@@ -1,7 +1,7 @@
 import { converElement, load, loadId } from "../storage/load.js";
 import { containerPage } from "./loadFolder.js";
 import { save } from "../storage/save.js";
-import { renderfordelate, showTask } from "./content.js";
+import { renderDefault, renderfordelate, showTask } from "./content.js";
 import { createDate, filterAll, filterComplete } from "./filterTasks.js";
 import { btnFilterToday, btnFilterComplete, btnFilterAll, obtainTitle } from "./filter.js";
 
@@ -30,9 +30,11 @@ containerPage.addEventListener("click", (e) => {
         getElements(e);
         let title = obtainTitle(btnFilterAll);
         showTask(filterAll(), title);
+    }else if (e.target.classList.contains("SwitchStatus") && containerPage.dataset.page === "1") {
+        let uniqueElement = getElements(e);
+        renderDefault(uniqueElement);
     } else if (e.target.classList.contains("SwitchStatus")) {
         let uniqueElement = getElements(e);
-        console.log(uniqueElement)
         renderfordelate(uniqueElement);
     }
 })
