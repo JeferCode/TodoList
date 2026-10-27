@@ -102,6 +102,10 @@ formTask.addEventListener("submit", (e) => {
             task.priority = data.priority;
             save(Folders);
             formTask.reset();
+            if (formTask.dataset.folder === "1") {
+                renderDefault(element);
+                return;
+            }
             renderfordelate(element)
         }
     }
