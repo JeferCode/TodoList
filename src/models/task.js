@@ -11,7 +11,6 @@ export class task{
     }
 
     switchComplete(){
-        console.log("llegamos")
         this.complete = !this.complete;
     }
 }

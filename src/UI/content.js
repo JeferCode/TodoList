@@ -1,6 +1,7 @@
 import { containerPage, renderFolders } from "./loadFolder.js";
 import { formTask } from "./addTask.js";
 
+
 export function renderPage(data) {
     let title = rendertitle(data.name);
     const container = document.createElement("div");
@@ -71,7 +72,6 @@ export function renderfordelate(element) {
 
 export function rendertitle(data) {
     const title = document.createElement("h2");
-    console.log(data)
     title.textContent = data;
     return title;
 }

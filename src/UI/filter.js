@@ -25,6 +25,5 @@ containerFilter.addEventListener("click", (e)=>{
 
 export function obtainTitle(element) {
     let name = element.textContent;
-    console.log(name)
     return name
 }

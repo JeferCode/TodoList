@@ -1,6 +1,6 @@
 import { containerPage } from "./loadFolder.js";
 import { converElement, load, loadId } from "../storage/load.js";
-import { renderPage, renderfordelate, showTask } from "./content.js";
+import { renderDefault, renderPage, renderfordelate, showTask } from "./content.js";
 import { save } from "../storage/save.js";
 import { folder } from "../models/folder.js";
 import { obtainTask } from "./taskStatus.js";
@@ -20,14 +20,14 @@ containerPage.addEventListener("click", (e) => {
         let elementFolderUNique = loadId(folders, idFolder.folder);
         delateTasks(elementFolderUNique, idFolder.id)
         save(folders)
+        if (idFolder.folder === "1") {
+            renderDefault(elementFolderUNique);
+            return;
+        }
         renderfordelate(elementFolderUNique)
         if (containerPage.dataset.page === "filterToday") {
-            console.log("esto es createDate: ")
-            console.log(createDate());
             let title = obtainTitle(btnFilterToday);
             showTask(createDate(), title);
-            console.log("esto es createDate: ")
-            console.log(createDate());
         } else if (containerPage.dataset.page === "filterComplete") {
             let title = obtainTitle(btnFilterComplete);
             showTask(filterComplete(), title);

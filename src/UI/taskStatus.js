@@ -39,12 +39,8 @@ containerPage.addEventListener("click", (e) => {
     }
 })
 
-//al editar una tarea en los filtros a la carpeta origen del filtro , tengo que buscar en que lugar se establece la id de la carpeta para corregirlo.
-
 function getElements(e) {
-    console.log("este es element: ")
     let element = e.target.closest(".container-task");
-    console.log(element)
     if (!element) {
         return;
     }

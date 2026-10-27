@@ -60,7 +60,6 @@ listContent.addEventListener("click", (e) => {
         let converFolders = converElement(folders);
         let data = loadId(converFolders, Id);
         if (data.id === "1") {
-            console.log("showdefault")
             renderDefault(data)
             return;
         }
