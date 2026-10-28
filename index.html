@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+<script defer src="main.js"></script></head>
+
+<body>
+    <header>
+        <nav class="menu">
+            <div id="container-filter">
+                <button class="filter" id="all">Todos</button>
+                <button class="filter" id="complete">Completas</button>
+                <button class="filter" id="today">Hoy</button>
+            </div>
+            <p class="list-title">listas:</p>
+            <ul id="list-content">
+            </ul>
+            <button class="add" id="añadir">añadir</button>
+        </nav>
+    </header>
+    <section id="container">
+        <div id="container-page" data-page="1" data-name="Imbox" data-id="1"></div>
+    </section>
+    <div id="modal" class="hidden">
+        <div id="section-form-folder" class="hidden">
+            <form id="form-folder">
+                <h2>ingresa el nombre de la lista:</h2>
+                <input type="text" name="name" placeholder="New List">
+                <div>
+                    <button type="submit" id="create-folder">Crear</button>
+                    <button type="button" id="cancel-folder">cancelar</button>
+                </div>
+            </form>
+        </div>
+        <div id="section-form-task" class="hidden" data-complete="false">
+            <form id="form-task">
+                <h2>ingresa la informacion de la tarea:</h2>
+                <label for="title">titulo:</label>
+                <input type="text" name="title" id="title" placeholder="title">
+
+                <label for="description">descripción:</label>
+                <input type="text" name="description" id="description" placeholder="description">
+
+                <label for="dueDate">fecha limite:</label>
+                <input type="date" name="dueDate" id="dueDate" placeholder="date">
+
+                <label for="priority">prioridad:</label>
+                <select id="priority" name="priority">
+                    <option value="low">baja</option>
+                    <option value="medium">media</option>
+                    <option value="high">alta</option>
+                </select>
+                <div class="container-buttons">
+                    <button type="submit" id="create-task">Continuar</button>
+                    <button type="button" id="cancel-task">cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
