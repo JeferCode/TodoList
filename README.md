@@ -4,7 +4,13 @@ Una aplicación sencilla para organizar tus tareas por carpetas y mantener un co
 
 ## Descripción
 
-TodoList es un proyecto desarrollado con JavaScript y Webpack para gestionar tareas diarias, organizarlas por categorías y llevar un control de lo que está pendiente o completado. La app guarda la información localmente en el navegador, por lo que puedes usarla de forma rápida sin configurar un backend.
+TodoList es un proyecto desarrollado con JavaScript y Webpack para gestionar tareas diarias, organizarlas por categorías y llevar un control de lo que está pendiente o completado. La app guarda los datos localmente en el navegador para que puedas volver a consultar o modificar tus listas sin perder información.
+
+## GitHub Pages
+
+Puedes ver la aplicación desplegada aquí:
+
+https://jefercode.github.io/TodoList/
 
 ## Características
 
